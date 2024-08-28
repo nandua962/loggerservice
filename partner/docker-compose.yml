@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+  partner:
+    build: .
+    image: tuneverse/partner
+    container_name: tuneverse-partner-container
+    environment:
+      PARTNER_DEBUG: "true"
+      PARTNER_DB_USER: "postgres"
+      PARTNER_DB_PORT: "5433"
+      PARTNER_DB_PASSWORD: "tuneverse"
+      PARTNER_DB_DATABASE: "tuneverse_local"
+      PARTNER_ACCEPTED_VERSIONS: "v1,v2"
+      PARTNER_DB_SCHEMA: "public"
+      PARTNER_DB_HOST: "10.1.0.229"
+      PARTNER_CACHE_EXPIRATION: "1"
+      PARTNER_DB_SSLMODE: "disable"
+      UTILITY_SERVICE_URL : "http://10.1.0.111:8080/api/v1.0"
+      SUBSCRIPTION_SERVICE_URL : "http://10.1.0.108:8035/api/v1.0"
+      MEMBER_SERVICE_URL : "http://10.1.0.137:8039/api/v1.0"
+      PARTNER_SERVICE_URL : "http://10.1.0.90:8031/api/v1.0"
+      OAUTH_SERVICE_URL : "http://10.1.0.90:8080/api/v1.0"
+      STORE_SERVICE_URL : "http://10.1.0.108:8022/api/v1.0"
+      ACTIVITY_LOG_SERVICE_URL : "http://10.1.0.86:8026/api/v1.0"
+      LOCALISATION_SERVICE_URL : "http://10.1.0.86:8025/api/v1"
+      LOGGER_SERVICE_URL : "http://10.1.0.90:8040/api/v1.0/logs"
+      LOGGER_SECRET : "logger service secret"
+      ERROR_HELP_LINK : "https://docs.google.com/spreadsheets/d/1dgBRdaj-xVt5DcrBNIEjqjzH5paAmKyKJ4DeihXvcDo/edit?usp:sharing"
+      CLIENT_CREDENTIAL_ENCRYPTION_KEY : "tuneverse-esrevenuttuneverse-tue"
+      PARTNER_PAYMENT_GATEWAY_ENCRYPTION_KEY : "tuneverse-esreve"
+    ports:
+      - 8000:8000
