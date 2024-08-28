@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    image: tuneverse/utility
+    container_name: tuneverse-utility-container
+    environment:
+      UTILITY_DEBUG: "true"
+      UTILITY_PORT: "8080"
+      UTILITY_DB_USER: "tuneverse_user"
+      UTILITY_DB_PORT: "5432"
+      UTILITY_DB_PASSWORD: "S3cretPassWord"
+      UTILITY_DB_DATABASE: "tuneverse_dev"
+      UTILITY_ACCEPTED_VERSIONS: "v1_0"
+      UTILITY_DB_SCHEMA: "public"
+      UTILITY_DB_HOST: "10.1.0.195"
+      UTILITY_LOCALISATION_SERVICE_URL: "http://10.1.0.86:8025/api/v1"
+      UTILITY_ENDPOINT_URL : http://10.1.0.86:8025/api/v1
+      UTILITY_ERROR_HELP_LINK : https://docs.google.com/spreadsheets/d/1dgBRdaj-xVt5DcrBNIEjqjzH5paAmKyKJ4DeihXvcDo/edit?usp=sharing
+      UTILITY_LOGGER_SERVICE_URL : http://10.1.0.90:8040/api/v1.0
+      UTILITY_LOGGER_SECRET : logger service secret
+    ports:
+      - 8080:8080
